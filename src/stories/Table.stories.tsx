@@ -79,7 +79,7 @@ export function Default() {
         Cell: () => <Icon path={mdiOpenInNew} size={'14px'} color={'#09f'} />
       },
       {
-        Header: 'Artigo',
+        Header: () => <div style={{textAlign: 'left'}}>Artigo</div>,
         accessor: 'title',
         width: 320,
         Cell: (props) => <div style={{ textAlign: 'left', display: 'flex', gap: 8, alignItems: 'center' }}>
@@ -88,20 +88,21 @@ export function Default() {
         </div>
       },
       {
-        Header: 'Views',
+        Header: () => <div style={{textAlign: 'right'}}>Views</div>,
         accessor: 'views',
         Cell: (props) => <div style={{ textAlign: 'right', fontWeight: 700, fontFamily: '"Roboto mono", monospace' }}>{props.value.toLocaleString('pt-br')}</div>
       },
       {
-        Header: 'Conversões',
+        Header: () => <div style={{textAlign: 'left'}}>Conversões</div>,
         accessor: 'conversions',
         Cell: (props) => <div style={{ display: 'flex', gap: 8, fontWeight: 700, fontFamily: '"Roboto mono", monospace' }}>
           <span>{props.value.thoushands}k</span>
           <span style={{ color: '#09f' }}>{props.value.percentage}%</span>
         </div>
       },
-      {
-        Header: 'Ações',
+      { 
+        id: Math.random().toString(),
+        Header: () => <div style={{textAlign: 'right'}}>Ações</div>,
         Cell: () => <div style={{ textAlign: 'right' }}>
           todo: actions
         </div>
