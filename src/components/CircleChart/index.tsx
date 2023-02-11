@@ -1,1 +1,1 @@
-export { default } from './CircleChart';
+export * from './CircleChart';
