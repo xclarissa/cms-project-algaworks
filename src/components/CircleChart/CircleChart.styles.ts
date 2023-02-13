@@ -36,10 +36,9 @@ export const Percentage = styled.span<{theme: 'default' | 'primary'}> `
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #274060;
+  color:  ${props => props.theme === 'primary' ? '#09f' :  '#274060'};;
   font-weight: 900;
-  font-size: 1.2em;
-  color: ${props => props.theme === 'default' ? '#09f' :  '#274060'};
+  font-size: 1.2em; 
 `;
 
 export const Caption = styled.span<{theme: 'default' | 'primary'}>`

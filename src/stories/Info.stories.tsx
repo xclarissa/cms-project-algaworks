@@ -4,7 +4,7 @@ import Info from '../components/Info/Info';
 export default {
   title: 'Example/Info',
   component: Info,
-} as ComponentMeta<typeof Info>;;
+} as ComponentMeta<typeof Info>;
 
 const Template:  ComponentStory<typeof Info> = (args) => <Info {...args} />;
 

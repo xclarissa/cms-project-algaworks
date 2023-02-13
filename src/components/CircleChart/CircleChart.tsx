@@ -54,7 +54,7 @@ export function CircleChart({
             strokeDashoffset={offset}
           />
         </CC.Svg>
-        <CC.Percentage>{progress}%</CC.Percentage>
+        <CC.Percentage theme={theme}>{progress}%</CC.Percentage>
       </CC.SvgWrapper>
       {caption && <CC.Caption>{caption}</CC.Caption>}
     </CC.Wrapper>
