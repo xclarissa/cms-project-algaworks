@@ -1,5 +1,5 @@
 import * as P from './Profile.styles';
-import Avatar from '../../assets/avatar.jpg';
+import Avatar from '../../../assets/avatar.jpg';
 
 export interface ProfileProps {
   title: string;

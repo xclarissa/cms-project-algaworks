@@ -1,6 +1,6 @@
 import * as SC from "./SessionController.styles";
 import Button from "../Button/Button";
-import Avatar from '../../assets/avatar.jpg';
+import Avatar from '../../../assets/avatar.jpg';
 
 export interface SessionControllerProps {
   title: string;

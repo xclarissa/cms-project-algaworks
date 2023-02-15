@@ -2,7 +2,7 @@ import { Story, Meta } from "@storybook/react";
 import {
   WorldPriceCounter,
   WorldPriceCounterProps,
-} from "../components/WorldPriceCounter";
+} from "../app/components/WorldPriceCounter";
 
 export default {
   title: "Example/WorldPriceCounter",

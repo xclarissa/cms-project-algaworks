@@ -1,4 +1,4 @@
-import NoData, { NoDataProps } from "../components/NoData/NoData";
+import NoData, { NoDataProps } from "../app/components/NoData/NoData";
 import { Story, Meta } from "@storybook/react";
 
 export default {
