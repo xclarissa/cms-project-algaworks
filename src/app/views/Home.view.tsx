@@ -1,13 +1,16 @@
 import usePageTitle from "../../core/hooks/usePageTitle";
-import DefaultLayout from "../../layouts/Default/Default.layout";
-// import DefaultLayoyt from "../layouts/Default"
+import PostsList from "../features/PostsList";
+import DefaultLayout from "../../app/layouts/Default/Default.layout";
+import UserMetrics from "../features/UserMetrics";
+import UserTopTags from "../features/UserTopTags";
 
 export default function Home() {
   usePageTitle("Home");
   return (
     <DefaultLayout>
-      <h1>Home</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat est pariatur, beatae eveniet neque aut officia laudantium molestias omnis ratione, voluptatum molestiae tempora maxime veritatis nam temporibus minima, labore doloribus!</p>
+      <UserTopTags />
+      <UserMetrics />
+      <PostsList />
     </DefaultLayout>
   );
 }

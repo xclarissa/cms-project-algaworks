@@ -1,6 +1,6 @@
-import Logo from "../../app/components/Logo";
-import NavBar from "../../app/components/Navbar";
-import { SessionController } from "../../app/components/SessionController";
+import Logo from "../../../app/components/Logo";
+import NavBar from "../../../app/components/Navbar";
+import { SessionController } from "../../../app/components/SessionController";
 import * as DL from "./DefaultLayout.styles";
 
 export interface DefaultLayoutProps {
