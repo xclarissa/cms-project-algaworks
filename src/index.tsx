@@ -17,9 +17,9 @@ root.render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path='/usuario/:userId' element={<Contact />} />
-          <Route path='/calc/:a/:b' element={<UserView />} />
-          <Route path='/usuario/:userId' element={<CalcView />} />
+          <Route path='/contato' element={<Contact />} />
+          <Route path='/usuario/:userId' element={<UserView />} />
+          <Route path='/calc/:a/:b' element={<CalcView />} />
           <Route path="*" element={<NotFound404 />} />
         </Routes>
       </BrowserRouter>
