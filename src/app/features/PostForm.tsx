@@ -8,10 +8,16 @@ import { MarkdownEditor } from "../components/MarkdownEditor";
 import { TagInput } from "../components/TagInput";
 import { WorldPriceCounter } from "../components/WorldPriceCounter";
 import countWordsInMarkdown from "../../utils/countWordsInMarkdown";
+import { useNavigate } from "react-router-dom";
 
 export default function PostForm() {
+  const navigate = useNavigate();
   const [tags, setTags] = useState<Tag[]>([]);
-  const [body, setBody] = useState(""); 
+  const [body, setBody] = useState("");
+
+  function handleClick() {
+    // navigate("/");
+  }
 
   return (
     <PostFormWrapper>
@@ -33,7 +39,7 @@ export default function PostForm() {
           pricePerWord={0.25}
           wordsCount={countWordsInMarkdown(body)}
         />
-        <Button label="salvar post" variant="primary" />
+        <Button label="salvar post" variant="primary" onClick={handleClick} />
       </PostFormSubmitWrapper>
     </PostFormWrapper>
   );
