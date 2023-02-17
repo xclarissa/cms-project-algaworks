@@ -1,41 +1,24 @@
-import styled from 'styled-components';
-
-const THEME = {
-  default: {
-    color: '#0099FF'
-  },
-  primary: {
-    color: '#274060'
-  },
-  defaultCurrency: {
-    color: '#0099FF'
-  },
-  primaryCurrency: {
-    color: '#274060'
-  }
-}
+import styled from "styled-components";
 
 export const Wrapper = styled.div<{
-  color: 'primary' | 'default';
+  color: string;
 }>`
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
-  height: 37px;
+  color: #274060;
 
   span.Description {
-    font-size: 14px;
-    color: #274060;
-  }
- 
-  span.Currency {
-    font-size: 22px;
-    color: ${props => THEME[props.color].color}
+    font-size: 12px;
+    text-transform: lowercase;
   }
 
+  span.Currency {
+    color: ${(p) => p.color};
+  }
+  
   span.Value {
-    font-size: 22px;
-    font-weight: 700;
-    color: ${props => THEME[props.color].color}
+    font-size: 18px;
+    font-weight: 800;
+    color: ${(p) => p.color};
   }
 `;
