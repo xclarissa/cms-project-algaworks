@@ -1,27 +1,24 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 import Icon from "@mdi/react";
-import { mdiInformation } from '@mdi/js'
-import Paragraph from '../Typography/Paragraph';
+import { mdiInformation } from "@mdi/js";
+import Paragraph from "../Typography/Paragraph";
+import { transparentize } from "polished";
 
 export interface InfoProps {
   title: string;
   description: string;
 }
 
-export default function Info (props: InfoProps) {
+export default function Info(props: InfoProps) {
   return (
     <InfoWrapper>
       <InfoInnerContent>
         <InfoIcon>
-          <Icon 
-            color="#09f"
-            size="48px"
-            path={mdiInformation}
-          />
+          <Icon color="#09f" size="48px" path={mdiInformation} />
         </InfoIcon>
         <InfoMessages>
           <InfoTitle>{props.title}</InfoTitle>
-          <Paragraph size={'default'}>{props.description}</Paragraph>
+          <Paragraph size={"default"}>{props.description}</Paragraph>
         </InfoMessages>
       </InfoInnerContent>
     </InfoWrapper>
@@ -35,6 +32,7 @@ const InfoWrapper = styled.div`
   justify-content: center;
   width: 373px;
   background-color: #f3f8fa;
+  border: 1px solid ${transparentize(0.9, "#274060")};
 `;
 
 const InfoInnerContent = styled.div`

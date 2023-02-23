@@ -8,19 +8,22 @@ import { MarkdownEditor } from "../components/MarkdownEditor";
 import { TagInput } from "../components/TagInput";
 import { WorldPriceCounter } from "../components/WorldPriceCounter";
 import countWordsInMarkdown from "../../utils/countWordsInMarkdown";
-import { useNavigate } from "react-router-dom";
+import info from "../../utils/info";
 
 export default function PostForm() {
-  const navigate = useNavigate();
   const [tags, setTags] = useState<Tag[]>([]);
   const [body, setBody] = useState("");
 
-  function handleClick() {
-    // navigate("/");
+  function handleSubmit(ev: React.FormEvent<HTMLFormElement>) {
+    ev.preventDefault();
+    info({
+      title: "Post salvo com sucesso!",
+      description: "Você acabou de salvar um post",
+    });
   }
 
   return (
-    <PostFormWrapper>
+    <PostFormWrapper onSubmit={handleSubmit}>
       <Input
         label="título"
         placeholder="e.g.: Como fiquei rico aprendendo React"
@@ -39,7 +42,7 @@ export default function PostForm() {
           pricePerWord={0.25}
           wordsCount={countWordsInMarkdown(body)}
         />
-        <Button label="salvar post" variant="primary" onClick={handleClick} />
+        <Button label="salvar post" variant="primary" type="submit" />
       </PostFormSubmitWrapper>
     </PostFormWrapper>
   );
@@ -51,7 +54,7 @@ const PostFormWrapper = styled.form`
   gap: 24px;
 `;
 
-const PostFormSubmitWrapper = styled.form`
+const PostFormSubmitWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 `;

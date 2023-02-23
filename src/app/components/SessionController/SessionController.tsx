@@ -5,7 +5,7 @@ import Avatar from '../../../assets/avatar.jpg';
 export interface SessionControllerProps {
   title: string;
   description: string;
-  onLogout?: () => void;
+  onLogout?: () => any;
 }
 
 export function SessionController({ title, description, onLogout }: SessionControllerProps) { 

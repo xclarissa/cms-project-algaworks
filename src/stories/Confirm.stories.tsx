@@ -1,15 +1,16 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import Confirm from '../app/components/Confirm/Confirm';
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+import Confirm from "../app/components/Confirm/Confirm";
 
 export default {
-  title: 'Example/Confirm',
-  component: Confirm
+  title: "Example/Confirm",
+  component: Confirm,
 } as ComponentMeta<typeof Confirm>;
 
-const Template: ComponentStory<typeof Confirm> = (args) => <Confirm {...args} />;
+const Template: ComponentStory<typeof Confirm> = (args) => (
+  <Confirm {...args} />
+);
 
-export const ConfirmModal= Template.bind({});
+export const ConfirmModal = Template.bind({});
 ConfirmModal.args = {
-    description: 'Deseja realmente sair?'
+  title: "Deseja realmente sair?",
 };
-

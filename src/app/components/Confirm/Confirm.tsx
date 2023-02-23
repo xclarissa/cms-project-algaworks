@@ -1,58 +1,49 @@
-import styled from 'styled-components';
-import Button from '../Button/Button';
+import styled from "styled-components";
+import Button from "../Button/Button";
 
 export interface ConfirmProps {
-  description: string;
+  title: string;
+  onConfirm: () => any;
+  onCancel: () => any;
 }
 
 export default function Confirm(props: ConfirmProps) {
   return (
     <ConfirmWrapper>
-      <ConfirmContent>
-        <Title>{props.description}</Title>
-        <ButtonWrapper>
-          <Button className="Danger" variant="danger" label="Não" />
-          <Button variant="primary" label="Sim" />
-        </ButtonWrapper>
-      </ConfirmContent>
+      <ConfirmTitle>{props.title}</ConfirmTitle>
+      <ConfirmButtonDisplay>
+        <Button variant="danger" label="Não" onClick={props.onCancel} />
+        <Button variant="primary" label="Sim" onClick={props.onConfirm} />
+      </ConfirmButtonDisplay>
     </ConfirmWrapper>
   );
 }
 
 const ConfirmWrapper = styled.div`
-  box-sizing: border-box;
-  // ver altura e largura se é maior que a caixa ConfirmContent
-  width: 229px;
-  height: 106px;
-  background-color: #f3f8fa;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 24px;
-  gap: 16px;
-`;
-
-const ConfirmContent = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  width: 181px;
-  height: 58px;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  background-color: #f3f8fa;
+  color: #274060;
+  width: 229px;
 `;
 
-const Title = styled.h3`
-  font-size: 16px;
-  color: #274060;
+export const ConfirmTitle = styled.h2`
+  font-size: 18px;
   font-weight: 700;
-`
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  line-clamp: 1;
+  overflow: hidden;
+`;
 
-const ButtonWrapper = styled.div`
+export const ConfirmButtonDisplay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 5px;
-  /* width: 82px;
-  height: 24px; */
   gap: 8px;
 `;
