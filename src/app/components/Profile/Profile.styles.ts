@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const Wrapper = styled.a`
+export const Wrapper = styled(Link)`
   text-decoration: none;
   width: 100%;
   height: 80px;

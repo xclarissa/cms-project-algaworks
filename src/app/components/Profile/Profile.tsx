@@ -2,16 +2,17 @@ import * as P from './Profile.styles';
 import Avatar from '../../../assets/avatar.jpg';
 
 export interface ProfileProps {
-  title: string;
+  name: string;
   description: string;
+  editorId: number;
 }
 
-export default function Profile({ title, description }: ProfileProps) {
+export default function Profile({ name, description, editorId}: ProfileProps) {
   return (
-    <P.Wrapper>
+    <P.Wrapper to={`/editores/${editorId}`}>
       <P.Image src={Avatar} alt="Profile Photo" />  
       <P.Info>
-        <P.Title>{title}</P.Title>
+        <P.Title>{name}</P.Title>
         <P.Description>{description}</P.Description>
       </P.Info>
     </P.Wrapper>

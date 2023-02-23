@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import Logo from "../../../app/components/Logo";
 import NavBar from "../../../app/components/Navbar";
 import { SessionController } from "../../../app/components/SessionController";
 import confirm from "../../../utils/confirm";
+import info from "../../../utils/info";
 import * as DL from "./DefaultLayout.styles";
 
 export interface DefaultLayoutProps {
@@ -9,6 +11,8 @@ export interface DefaultLayoutProps {
 }
 
 export default function DefaultLayout({ children }: DefaultLayoutProps) {
+  const navigate = useNavigate();
+
   return (
     <DL.Wrapper>
       <DL.Header>
@@ -26,7 +30,13 @@ export default function DefaultLayout({ children }: DefaultLayoutProps) {
             onLogout={() =>
               confirm({
                 title: "Certeza que quer sair?",
-                onConfirm: () => window.alert("SIM"),
+                onConfirm: () => {
+                  info({
+                    title: "Você foi deslogado",
+                    description: "Estamos direcionando você para página de login",
+                  });
+                  // navigate('/login')
+                },
                 onCancel: () => window.alert("NAO"),
               })
             }

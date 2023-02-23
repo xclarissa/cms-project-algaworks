@@ -1,11 +1,11 @@
-import * as WPC from "./WorldPriceCounter.styles";
+import * as WPC from "./WordPriceCounter.styles";
 
 export interface WorldPriceCounterProps {
   wordsCount: number;
   pricePerWord: number;
 }
 
-export function WorldPriceCounter({
+export function WordPriceCounter({
   wordsCount,
   pricePerWord,
 }: WorldPriceCounterProps) {

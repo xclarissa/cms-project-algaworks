@@ -4,12 +4,12 @@ import Profile from "../components/Profile/Profile";
 export default function EditorsList() {
   return (
     <EditorsListWrapper>
-      <Profile title="Fernando Lima" description="editor há 2 anos" />
-      <Profile title="Clarissa Xavier" description="desemvolvedora frontend há 2 anos" />
-      <Profile title="Rafael Garcia" description="analista de testes há 5 anos" />
-      <Profile title="Leonardo Ferreira" description="diretor de arte sênior" />
-      <Profile title="Luis Fernando" description="desenvolvedor backend há 4 anos" />
-      <Profile title="Daniel Cruz" description="tech lead" />
+      <Profile editorId={1} name="Fernando Lima" description="editor há 2 anos" />
+      <Profile editorId={2} name="Clarissa Xavier" description="desemvolvedora frontend há 2 anos" />
+      <Profile editorId={3} name="Rafael Garcia" description="analista de testes há 5 anos" />
+      <Profile editorId={4} name="Leonardo Ferreira" description="diretor de arte sênior" />
+      <Profile editorId={5} name="Luis Fernando" description="desenvolvedor backend há 4 anos" />
+      <Profile editorId={6} name="Daniel Cruz" description="tech lead" />
     </EditorsListWrapper>
   );
 }

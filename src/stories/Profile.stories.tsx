@@ -10,6 +10,6 @@ const Template: Story<ProfileProps> = (args) => <Profile {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  title: 'Clarissa Xavier',
+  name: 'Clarissa Xavier',
   description: 'front-end developer há 1 ano', 
 };

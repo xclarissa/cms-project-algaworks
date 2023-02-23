@@ -1,16 +1,16 @@
 import { Story, Meta } from "@storybook/react";
 import {
-  WorldPriceCounter,
+  WordPriceCounter,
   WorldPriceCounterProps,
-} from "../app/components/WorldPriceCounter";
+} from "../app/components/WordPriceCounter";
 
 export default {
   title: "Example/WorldPriceCounter",
-  component: WorldPriceCounter,
+  component: WordPriceCounter,
 } as Meta<WorldPriceCounterProps>;
 
 const Template: Story<WorldPriceCounterProps> = (args) => (
-  <WorldPriceCounter {...args} />
+  <WordPriceCounter {...args} />
 );
 
 export const Default = Template.bind({});

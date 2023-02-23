@@ -6,7 +6,7 @@ import { ImageUpload } from "../components/ImageUpload";
 import Input from "../components/Input/Input";
 import { MarkdownEditor } from "../components/MarkdownEditor";
 import { TagInput } from "../components/TagInput";
-import { WorldPriceCounter } from "../components/WorldPriceCounter";
+import { WordPriceCounter } from "../components/WordPriceCounter";
 import countWordsInMarkdown from "../../utils/countWordsInMarkdown";
 import info from "../../utils/info";
 
@@ -38,7 +38,7 @@ export default function PostForm() {
       />
 
       <PostFormSubmitWrapper>
-        <WorldPriceCounter
+        <WordPriceCounter
           pricePerWord={0.25}
           wordsCount={countWordsInMarkdown(body)}
         />

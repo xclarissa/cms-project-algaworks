@@ -8,10 +8,12 @@ interface InfoProps {
 }
 
 export default function info({ title, description }: InfoProps) {
-  confirmAlert({
-    overlayClassName: "info-overlay",
-    customUI: () => {
-      return <Info title={title} description={description} />;
-    },
-  });
+  setTimeout(() => {
+    confirmAlert({
+      overlayClassName: "info-overlay",
+      customUI: () => {
+        return <Info title={title} description={description} />;
+      },
+    });
+  }, 0);
 }

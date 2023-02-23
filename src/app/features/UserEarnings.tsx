@@ -7,7 +7,7 @@ export default function UserEarnings() {
       <ValueDescriptor color="primary" description="ganhos no mês" value={56054.32} isCurrency />
       <ValueDescriptor color="primary" description="ganhos na semana" value={56054.32} isCurrency /> 
       <ValueDescriptor color="default" description="ganhos de sempre" value={56054.32} isCurrency /> 
-      <ValueDescriptor color="default" description="Total de palavras" value={2_334_455} isCurrency /> 
+      <ValueDescriptor color="default" description="Total de palavras" value={2_334_455} /> 
     </UserEarningsWrapper>
   )
 }
