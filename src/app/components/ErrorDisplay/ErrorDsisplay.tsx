@@ -1,5 +1,6 @@
 import { mdiAlert } from "@mdi/js";
 import Icon from "@mdi/react";
+import Heading from "../Typography/Heading";
 
 export interface ErrorDisplayProps {
   title?: string;
@@ -7,25 +8,26 @@ export interface ErrorDisplayProps {
   small?: boolean;
 }
 
-export function ErrorDisplay({
-  title,
-  message,
-  small,
-}: ErrorDisplayProps) {
-  return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-        gap: "8px",
-        color: "#274060"
-      }}
-    >
-      <Icon path={mdiAlert} size={small ? "24px" : "48px"} />
-      <h3 style={{fontSize: "18px", fontWeight: 400}}>{title}</h3>
-      <p style={{fontSize: "12px", fontWeight: 400}}>{message}</p>
-    </div>
-  );
+export function ErrorDisplay (props: ErrorDisplayProps) {
+  return <div style={{
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    gap: 8,
+    alignItems: 'center',
+    color: '#274060'
+  }}>
+    <Icon
+      size={props.small ? '24px' : '48px'}
+      path={mdiAlert}
+    />
+
+    <Heading level={2}>
+      {props.title || 'Erro ao renderizar componente'}
+    </Heading>
+    
+    <span style={{ fontFamily: '"Roboto Mono", monospace', fontSize: 12 }}>
+      {props.message || 'Erro desconhecido'}
+    </span>
+  </div>
 }
