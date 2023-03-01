@@ -8,7 +8,7 @@ class Service {
 }
 
 function getData<T>(response: AxiosResponse<T>) {
-  return  response.data;
+  return response.data;
 }
 
 Http.defaults.baseURL = "http://localhost:8080/";
