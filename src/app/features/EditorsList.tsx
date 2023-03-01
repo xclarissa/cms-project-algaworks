@@ -1,7 +1,19 @@
-import styled from "styled-components";
+import { useEffect } from "react";
+import styled from "styled-components"; 
+import PostService from "../../sdk/services/Post.service";
 import Profile from "../components/Profile/Profile";
 
 export default function EditorsList() {
+  
+  useEffect(() => {
+    // const posts = PostService.getAllPosts();
+    // console.log(posts)
+    
+    const post = PostService.getExistingPost(1)
+    console.log('postId', post)
+
+  }, [])
+
   return (
     <EditorsListWrapper>
       <Profile editorId={1} name="Fernando Lima" description="editor há 2 anos" />
