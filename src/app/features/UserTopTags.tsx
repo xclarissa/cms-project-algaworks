@@ -1,18 +1,32 @@
-import styled from 'styled-components'
-import { CircleChart } from '../components/CircleChart'
+import { useState, useEffect } from "react";
+import styled from "styled-components";
+import { Metric } from "../../sdk/@types";
+import MetricService from "../../sdk/services/Metric.service";
+import { CircleChart } from "../components/CircleChart";
 
 export default function UserTopTags() {
+  const [topTags, setTopTags] = useState<Metric.EditorTagRatio>([]);
+
+  useEffect(() => {
+    MetricService.getTop3Tags().then(setTopTags);
+  }, []);
+
   return (
     <UserTopTagsWrapper>
-      <CircleChart progress={80} size={100} caption="HTML" theme='primary' />
-      <CircleChart progress={70} size={100} caption="CSS" theme='default' />
-      <CircleChart progress={95} size={100} caption="Javascript" theme='default' />
+      {topTags.map((tag, i) => (
+        <CircleChart
+          progress={tag.percentage}
+          caption={tag.tagName}
+          size={88}
+          theme={i === 0 ? "primary" : "default"}
+        />
+      ))}
     </UserTopTagsWrapper>
-  )
+  );
 }
 
 const UserTopTagsWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
-`
+`;
