@@ -1,25 +1,31 @@
 import { mdiTrashCan, mdiUpload } from "@mdi/js";
 import Icon from "@mdi/react";
 import { ChangeEvent, useState } from "react";
+import FileService from "../../../sdk/services/File.service";
 import Button from "../Button/Button";
 import * as IU from "./ImageUpload.styles";
 
 export interface ImageUploadProps {
   label: string;
+  onImageUpload: (imageUrl: string) => void;
 }
 
-export function ImageUpload({ label }: ImageUploadProps) {
-  const [filePreview, setFilePreview] = useState<string | null>(null);
+export function ImageUpload({ label, onImageUpload }: ImageUploadProps) {
+ const [filePreview, setFilePreview] = useState<string | null>(null)
 
-  function handleChange(event: ChangeEvent<HTMLInputElement>) {
-    const file = event.target.files![0]; // event para selecionar arquivo
+  function handleChange (e: ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files![0]
+    
     if (file) {
-      const reader = new FileReader();
-      reader.addEventListener("load", (e) =>
-        setFilePreview(String(e.target?.result))
-      );
+      const reader = new FileReader()
 
-      reader.readAsDataURL(file); //precisa ler o arquivo como urldata
+      reader.addEventListener('load', async e => {
+        setFilePreview(String(e.target?.result));
+        const imageUrl = await FileService.upload(file)
+        onImageUpload(imageUrl)
+      })
+
+      reader.readAsDataURL(file)
     }
   }
 
@@ -27,7 +33,11 @@ export function ImageUpload({ label }: ImageUploadProps) {
     return (
       <IU.ImagePreviewWrapper>
         <IU.ImagePreview preview={filePreview}>
-          <Button variant="primary" label="Remover Imagem" onClick={() => setFilePreview(null)}/>
+          <Button
+            variant="primary"
+            label="Remover Imagem"
+            onClick={() => setFilePreview(null)}
+          />
           {/* <Icon path={mdiTrashCan} size="24px" /> */}
         </IU.ImagePreview>
       </IU.ImagePreviewWrapper>
@@ -39,7 +49,7 @@ export function ImageUpload({ label }: ImageUploadProps) {
       <IU.Label>
         <Icon size={"24px"} path={mdiUpload} />
         {label}
-        <IU.Input type="file" onChange={handleChange} /> 
+        <IU.Input type="file" onChange={handleChange} />
       </IU.Label>
     </IU.Wrapper>
   );

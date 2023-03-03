@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Tag } from "react-tag-input";
 import styled from "styled-components";
 import Button from "../components/Button/Button";
@@ -15,12 +15,16 @@ export default function PostForm() {
   const [tags, setTags] = useState<Tag[]>([]);
   const [body, setBody] = useState("");
   const [title, setTitle] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
 
+  useEffect(() => {
+    console.log(imageUrl)
+  }, [imageUrl])
   async function handleSubmit(ev: React.FormEvent<HTMLFormElement>) {
     ev.preventDefault();
     const newPost = {
       body: body,
-      imageUrl: "",
+      imageUrl,
       tags: tags.map((tag) => tag.text),
       title: title,
     };
@@ -40,7 +44,7 @@ export default function PostForm() {
         value={title}
         onChange={(e) => setTitle(e.currentTarget.value)}
       />
-      <ImageUpload label="Thumbnail do post" />
+      <ImageUpload onImageUpload={setImageUrl} label="Thumbnail do post" />
       <MarkdownEditor onChange={setBody} />
       <TagInput
         tags={tags}

@@ -5,12 +5,13 @@ export interface ProfileProps {
   name: string;
   description: string;
   editorId: number;
+  avatarUrl: string; 
 }
 
-export default function Profile({ name, description, editorId}: ProfileProps) {
+export default function Profile({ name, description, editorId, avatarUrl }: ProfileProps) {
   return (
     <P.Wrapper to={`/editores/${editorId}`}>
-      <P.Image src={Avatar} alt="Profile Photo" />  
+      <P.Image src={avatarUrl} alt="Profile Photo" />  
       <P.Info>
         <P.Title>{name}</P.Title>
         <P.Description>{description}</P.Description>
