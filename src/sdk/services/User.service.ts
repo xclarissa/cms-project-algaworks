@@ -7,6 +7,12 @@ class UserService extends Service {
       this.getData
     );
   }
+
+  static getExistingEditor(id: number) {
+    return this.Http.get<User.EditorDetailed>(`/users/editors/${id}`).then(
+      this.getData
+    );
+  }
 }
 
 export default UserService;

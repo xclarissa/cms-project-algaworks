@@ -1,5 +1,10 @@
 import { transparentize } from "polished";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import { User } from "../../sdk/@types";
+import UserService from "../../sdk/services/User.service";
+import getEditorDescription from "../../sdk/utils/getEditorDescription";
 import FieldDescriptor from "../components/FieldDescriptor/FieldDescriptor";
 import ProgressBar from "../components/ProgressBar/ProgressBar";
 import ValueDescriptor from "../components/ValueDescriptor/ValueDescriptor";
@@ -11,38 +16,51 @@ interface EditorProfileProps {
 export default function EditorProfile({
   hidePersonalData,
 }: EditorProfileProps) {
+  const [editor, setEditor] = useState<User.EditorDetailed>();
+  const params = useParams<{ id: string }>();
+
+  useEffect(() => {
+    UserService.getExistingEditor(Number(params.id)).then(setEditor);
+  }, [params.id]);
+
+  if (!editor) {
+    return null;
+  }
+
   return (
     <EditorProfileWrapper>
       <EditorHeadline>
-        <Avatar
-          src={
-            "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
-          }
-        />
-        <Name>Daniel Bonifacio</Name>
-        <Description>Editor há 5 anos</Description>
+        <Avatar src={editor.avatarUrls.small} />
+        <Name>{editor.name}</Name>
+        <Description>
+          {getEditorDescription(new Date(editor.createdAt))}
+        </Description>
       </EditorHeadline>
 
       <Divisor />
 
       <DataWrapper>
         <ProfissionalInfo>
-          <Biography>
-            Ana Castillo é especialista em recrutamento de desenvolvedores e ama
-            escrever dicas para ajudar os devs a encontrarem a vaga certa para
-            elas. Atualmente tem uma empresa de Recruitment e é redatora no alga
-            content
-          </Biography>
-
-          <ProgressBar theme="primary" title="tech recruiting" progress={95} />
-          <ProgressBar theme="primary" title="coaching" progress={75} />
-          <ProgressBar theme="primary" title="java" progress={50} />
+          <Biography>{editor.bio}</Biography>
+          {editor.skills?.map((skill) => (
+            <ProgressBar
+              theme="primary"
+              title={skill.name}
+              progress={skill.percentage}
+            />
+          ))}
         </ProfissionalInfo>
 
         <PersonalInfo>
           <Address>
-            <FieldDescriptor description="cidade:" date="Vila Velha" />
-            <FieldDescriptor description="estado" date="Espirito Santo" />
+            <FieldDescriptor
+              description="cidade:"
+              date={editor.location.city}
+            />
+            <FieldDescriptor
+              description="estado"
+              date={editor.location.state}
+            />
           </Address>
 
           {!hidePersonalData && (
