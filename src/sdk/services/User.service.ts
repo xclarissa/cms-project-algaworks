@@ -13,6 +13,10 @@ class UserService extends Service {
       this.getData
     );
   }
+
+  static getUserDetailed(userId: number) {
+    return this.Http.get<User.Detailed>(`/users/${userId}`).then(this.getData);
+  }
 }
 
 export default UserService;

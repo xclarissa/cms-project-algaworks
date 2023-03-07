@@ -2,8 +2,8 @@ import { useNavigate } from "react-router-dom";
 import Logo from "../../../app/components/Logo";
 import NavBar from "../../../app/components/Navbar";
 import { SessionController } from "../../../app/components/SessionController";
-import confirm from "../../../utils/confirm";
-import info from "../../../utils/info";
+import confirm from "../../../core/utils/confirm";
+import info from "../../../core/utils/info";
 import * as DL from "./DefaultLayout.styles";
 
 export interface DefaultLayoutProps {

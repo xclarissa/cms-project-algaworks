@@ -1,4 +1,4 @@
-import { mdiTrashCan, mdiUpload } from "@mdi/js";
+import { mdiUpload } from "@mdi/js";
 import Icon from "@mdi/react";
 import { ChangeEvent, useState } from "react";
 import FileService from "../../../sdk/services/File.service";
@@ -7,42 +7,40 @@ import * as IU from "./ImageUpload.styles";
 
 export interface ImageUploadProps {
   label: string;
-  onImageUpload: (imageUrl: string) => void;
+  onImageUpload: (imageUrl: string) => any;
 }
 
 export function ImageUpload({ label, onImageUpload }: ImageUploadProps) {
- const [filePreview, setFilePreview] = useState<string | null>(null)
+  const [filePreview, setFilePreview] = useState<string | null>(null);
 
-  function handleChange (e: ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files![0]
-    
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files![0];
+
     if (file) {
-      const reader = new FileReader()
+      const reader = new FileReader();
 
-      reader.addEventListener('load', async e => {
+      reader.addEventListener("load", async (e) => {
         setFilePreview(String(e.target?.result));
-        const imageUrl = await FileService.upload(file)
-        onImageUpload(imageUrl)
-      })
+        const imageUrl = await FileService.upload(file);
+        onImageUpload(imageUrl);
+      });
 
-      reader.readAsDataURL(file)
+      reader.readAsDataURL(file);
     }
   }
 
-  if (filePreview) {
+  if (filePreview)
     return (
       <IU.ImagePreviewWrapper>
         <IU.ImagePreview preview={filePreview}>
           <Button
-            variant="primary"
-            label="Remover Imagem"
+            variant={"primary"}
+            label={"Remover imagem"}
             onClick={() => setFilePreview(null)}
           />
-          {/* <Icon path={mdiTrashCan} size="24px" /> */}
         </IU.ImagePreview>
       </IU.ImagePreviewWrapper>
     );
-  }
 
   return (
     <IU.Wrapper>

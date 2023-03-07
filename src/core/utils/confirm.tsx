@@ -1,6 +1,6 @@
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
-import Confirm from "../app/components/Confirm/Confirm";
+import Confirm from "../../app/components/Confirm/Confirm";
 
 interface ConfirmProps {
   title: string;

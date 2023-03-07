@@ -7,37 +7,35 @@ import Input from "../components/Input/Input";
 import { MarkdownEditor } from "../components/MarkdownEditor";
 import { TagInput } from "../components/TagInput";
 import { WordPriceCounter } from "../components/WordPriceCounter";
-import countWordsInMarkdown from "../../utils/countWordsInMarkdown";
-import info from "../../utils/info";
+import countWordsInMarkdown from "../../core/utils/countWordsInMarkdown";
+import info from "../../core/utils/info";
 import PostService from "../../sdk/services/Post.service";
 
 export default function PostForm() {
-  const [tags, setTags] = useState<Tag[]>([]);
-  const [body, setBody] = useState("");
-  const [title, setTitle] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [tags, setTags] = useState<Tag[]>([])
+  const [body, setBody] = useState('')
+  const [title, setTitle] = useState('')
+  const [imageUrl, setImageUrl] = useState('')
 
-  useEffect(() => {
-    console.log(imageUrl)
-  }, [imageUrl])
-  async function handleSubmit(ev: React.FormEvent<HTMLFormElement>) {
-    ev.preventDefault();
+  async function handleFormSubmit (e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
     const newPost = {
-      body: body,
+      body,
+      title,
+      tags: tags.map(tag => tag.text),
       imageUrl,
-      tags: tags.map((tag) => tag.text),
-      title: title,
-    };
-    const insertedPost = await PostService.insertNewPost(newPost);
+    }
+    console.log("imageUrl", imageUrl)
+    const insertedPost = await PostService.insertNewPost(newPost)
 
     info({
-      title: "Post salvo com sucesso!",
-      description: "Você acabou de salvar um post" + insertedPost.id,
-    });
+      title: 'Post salvo com sucesso',
+      description: 'Você acabou de criar o post com o id ' + insertedPost.id
+    })
   }
 
   return (
-    <PostFormWrapper onSubmit={handleSubmit}>
+    <PostFormWrapper onSubmit={handleFormSubmit}>
       <Input
         label="título"
         placeholder="e.g.: Como fiquei rico aprendendo React"
@@ -55,7 +53,7 @@ export default function PostForm() {
 
       <PostFormSubmitWrapper>
         <WordPriceCounter
-          pricePerWord={0.25}
+          pricePerWord={0.10}
           wordsCount={countWordsInMarkdown(body)}
         />
         <Button label="salvar post" variant="primary" type="submit" />
