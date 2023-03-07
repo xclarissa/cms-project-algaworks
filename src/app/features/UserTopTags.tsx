@@ -8,19 +8,23 @@ export default function UserTopTags() {
   const [topTags, setTopTags] = useState<Metric.EditorTagRatio>([]);
 
   useEffect(() => {
-    MetricService.getTop3Tags().then(setTopTags);
+    MetricService
+    .getTop3Tags()
+    .then(setTopTags);
   }, []);
 
   return (
     <UserTopTagsWrapper>
-      {topTags.map((tag, i) => (
-        <CircleChart
-          progress={tag.percentage}
-          caption={tag.tagName}
-          size={88}
-          theme={i === 0 ? "primary" : "default"}
-        />
-      ))}
+      {topTags.map((tag, i) => {
+        return (
+          <CircleChart
+            progress={tag.percentage}
+            caption={tag.tagName}
+            theme={i === 0 ? "primary" : "default"}
+            size={88}
+          />
+        );
+      })}
     </UserTopTagsWrapper>
   );
 }
