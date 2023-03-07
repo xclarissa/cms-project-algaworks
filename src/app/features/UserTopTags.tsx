@@ -8,9 +8,7 @@ export default function UserTopTags() {
   const [topTags, setTopTags] = useState<Metric.EditorTagRatio>([]);
 
   useEffect(() => {
-    MetricService
-    .getTop3Tags()
-    .then(setTopTags);
+    MetricService.getTop3Tags().then(setTopTags);
   }, []);
 
   return (
@@ -18,6 +16,7 @@ export default function UserTopTags() {
       {topTags.map((tag, i) => {
         return (
           <CircleChart
+            key={i}
             progress={tag.percentage}
             caption={tag.tagName}
             theme={i === 0 ? "primary" : "default"}

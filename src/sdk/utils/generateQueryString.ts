@@ -2,9 +2,7 @@ function generateQueryString(params: {
   [key: string]: string | number | boolean | string[] | undefined;
 }): string {
   const convertedParams: { [key: string]: string } = {};
-
-  console.log(params);
-  console.log(Object.keys(params));
+  
   Object.keys(params).forEach((key) => {
     const param = params[key];
     if (param) {

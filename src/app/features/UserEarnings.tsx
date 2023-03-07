@@ -8,7 +8,7 @@ export default function UserEarnings() {
   const [user, setUser] = useState<User.Detailed>();
 
   useEffect(() => {
-    UserService.getUserDetailed(6).then(setUser);
+    UserService.getUserDetailed(7).then(setUser);
   }, []);
 
   if (!user) {
